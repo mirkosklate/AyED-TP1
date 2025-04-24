@@ -1,3 +1,7 @@
+import sys
+import getpass
+
+
 usuarioAdmin = "admin"
 contrasenaAdmin = "admin"
 tipoUsuario = "Administrador"
@@ -11,7 +15,7 @@ def inicio_sesion():
     while(intentos > 0):
         print("\nBienvenido. Para iniciar sesion, por favor introduzca sus datos a continuacion.\n") 
         usuario = input("Usuario: ")    
-        contrasena = input("Contraseña: ")
+        contrasena = getpass.getpass("Contraseña: ")
 
         if usuario == usuarioAdmin:
             if contrasena == contrasenaAdmin:
@@ -28,6 +32,7 @@ def inicio_sesion():
     if intentos == 0:
         print("\nDemasiados intentos de inicio de sesion incorrectos. Terminando programa.")
         exit() #no se puede usar esto, sacarlo xd lol porfa
+
 
 def menu_principal():
     opcion = 1
@@ -61,7 +66,7 @@ def menu_GestionAerolineas():
         while(opcion2 < 1 or opcion2 > 4):
             opcion2 = int(input("Opcion invalida, intente nuevamente: "))
         match opcion2:
-            case 1: cartel_desarrollo()
+            case 1: gestionAerolineas_Crear()
             case 2: cartel_desarrollo()
             case 3: cartel_desarrollo()
             case 4: menu_principal()
@@ -101,5 +106,8 @@ def menu_Reportes():
             case 2: cartel_desarrollo()
             case 3: cartel_desarrollo()
             case 4: menu_principal() 
+
+def gestionAerolineas_Crear():
+    exit()
 
 inicio_sesion()
