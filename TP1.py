@@ -1,21 +1,28 @@
-import sys
+import os
+import time
 import getpass
-
 
 usuarioAdmin = "admin"
 contrasenaAdmin = "admin"
 tipoUsuario = "Administrador"
 
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def cartel_desarrollo():
-    print("Seccion en desarrollo, intente mas tarde.\n")
+    print("\nSeccion en desarrollo, intente mas tarde.\n")
+    time.sleep(3)
+    limpiar_pantalla()
 
 def inicio_sesion():
+    limpiar_pantalla()
+
     intentos = 3
 
     while(intentos > 0):
         print("\nBienvenido. Para iniciar sesion, por favor introduzca sus datos a continuacion.\n") 
         usuario = input("Usuario: ")    
-        contrasena = getpass.getpass("Contraseña: ")
+        contrasena = getpass.getpass("Ingrese su contraseña... ")
 
         if usuario == usuarioAdmin:
             if contrasena == contrasenaAdmin:
@@ -31,10 +38,10 @@ def inicio_sesion():
 
     if intentos == 0:
         print("\nDemasiados intentos de inicio de sesion incorrectos. Terminando programa.")
-        exit() #no se puede usar esto, sacarlo xd lol porfa
-
 
 def menu_principal():
+    limpiar_pantalla()
+
     opcion = 1
     while(opcion != 0):
         print(f"Menu del {tipoUsuario}\n")
@@ -55,6 +62,8 @@ def menu_principal():
             case 5: inicio_sesion()
 
 def menu_GestionAerolineas():
+    limpiar_pantalla()
+
     opcion2 = 1
     while(opcion2 != 0):
         print("1. Crear Aerolinea")
@@ -72,6 +81,8 @@ def menu_GestionAerolineas():
             case 4: menu_principal()
 
 def menu_GestionNovedades():
+    limpiar_pantalla()
+
     opcion3 = 1
     while(opcion3 != 0):
         print("1. Crear Novedad")
@@ -91,6 +102,8 @@ def menu_GestionNovedades():
             case 5: menu_principal() 
 
 def menu_Reportes():
+    limpiar_pantalla()
+
     opcion4 = 1
     while(opcion4 != 0):
         print("1. Reporte de Ventas")
@@ -108,6 +121,7 @@ def menu_Reportes():
             case 4: menu_principal() 
 
 def gestionAerolineas_Crear():
-    exit()
+    cartel_desarrollo()
+    menu_GestionAerolineas()
 
 inicio_sesion()
