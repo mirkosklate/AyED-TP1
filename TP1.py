@@ -38,6 +38,7 @@ def inicio_sesion():
 
     if intentos == 0:
         print("\nDemasiados intentos de inicio de sesion incorrectos. Terminando programa.")
+        time.sleep(3)
 
 def menu_principal():
     limpiar_pantalla()
