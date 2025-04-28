@@ -38,7 +38,7 @@ def cartel_desarrollo():
     time.sleep(3)
     limpiar_pantalla()
 
-def inicio_sesion():
+def inicio_sesion(contadorArg, contadorBra, contadorChi):
     limpiar_pantalla()
 
     intentos = 3
@@ -51,7 +51,7 @@ def inicio_sesion():
         if usuario == usuarioAdmin:
             if contrasena == contrasenaAdmin:
                 print(f"Usuario validado exitosamente. Bienvenido {tipoUsuario}\n")
-                menu_principal()
+                menu_principal(contadorArg, contadorBra, contadorChi)
             else:
                 print("Contraseña incorrecta. Intente nuevamente")
         else:
@@ -64,7 +64,7 @@ def inicio_sesion():
         print("\nDemasiados intentos de inicio de sesion incorrectos. Terminando programa.")
         time.sleep(3)
 
-def menu_principal():
+def menu_principal(contadorArg, contadorBra, contadorChi):
     limpiar_pantalla()
 
     opcion = 1
@@ -81,7 +81,7 @@ def menu_principal():
             opcion = int(input("Opcion invalida, intente nuevamente: "))
         match opcion:
             case 1: 
-                menu_GestionAerolineas()
+                menu_GestionAerolineas(contadorArg, contadorBra, contadorChi)
             case 2: 
                 cartel_desarrollo()
             case 3: 
@@ -89,30 +89,10 @@ def menu_principal():
             case 4: 
                 menu_Reportes()
             case 5: 
-                inicio_sesion()
+                inicio_sesion(contadorArg, contadorBra, contadorChi)
 
-def menu_GestionAerolineas():
+def menu_GestionAerolineas(contadorArg, contadorBra, contadorChi):
     limpiar_pantalla()
-
-    opcion2 = 1
-    while(opcion2 != 0):
-        print("1. Crear Aerolinea")
-        print("2. Modificar Aerolinea")
-        print("3. Eliminar Aerolinea")
-        print("4. Volver")
-
-        opcion2 = int(input("Seleccion de opcion: "))
-        while(opcion2 < 1 or opcion2 > 4):
-            opcion2 = int(input("Opcion invalida, intente nuevamente: "))
-        match opcion2:
-            case 1: 
-                gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi)
-            case 2: 
-                cartel_desarrollo()
-            case 3: 
-                cartel_desarrollo()
-            case 4: 
-                menu_principal()
 
     def gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi):
         limpiar_pantalla()
@@ -135,7 +115,7 @@ def menu_GestionAerolineas():
                     case 2: 
                         submenu_mostrarAerolineas(contadorArg, contadorBra, contadorChi)
                     case 3: 
-                        menu_principal()
+                        menu_principal(contadorArg, contadorBra, contadorChi)
         
         def submenu_mostrarAerolineas(contadorArg, contadorBra, contadorChi):
             limpiar_pantalla()
@@ -174,7 +154,7 @@ def menu_GestionAerolineas():
                     case 1: 
                         gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi)
                     case 2: 
-                        menu_principal()
+                        menu_principal(contadorArg, contadorBra, contadorChi)
 
         nombreAerolinea = input("Inserte nombre aerolinea:")
 
@@ -211,6 +191,26 @@ def menu_GestionAerolineas():
             limpiar_pantalla()
             gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi)
 
+    opcion2 = 1
+    while(opcion2 != 0):
+        print("1. Crear Aerolinea")
+        print("2. Modificar Aerolinea")
+        print("3. Eliminar Aerolinea")
+        print("4. Volver")
+
+        opcion2 = int(input("Seleccion de opcion: "))
+        while(opcion2 < 1 or opcion2 > 4):
+            opcion2 = int(input("Opcion invalida, intente nuevamente: "))
+        match opcion2:
+            case 1: 
+                gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi)
+            case 2: 
+                cartel_desarrollo()
+            case 3: 
+                cartel_desarrollo()
+            case 4: 
+                menu_principal(contadorArg, contadorBra, contadorChi)
+
 def menu_GestionNovedades():
     limpiar_pantalla()
 
@@ -235,7 +235,7 @@ def menu_GestionNovedades():
             case 4: 
                 gestionNovedades_Ver()
             case 5: 
-                menu_principal()
+                menu_principal(contadorArg, contadorBra, contadorChi)
     
     def gestionNovedades_Editar():
         cartel_desarrollo()
@@ -264,6 +264,6 @@ def menu_Reportes():
             case 3: 
                 cartel_desarrollo()
             case 4: 
-                menu_principal() 
+                menu_principal(contadorArg, contadorBra, contadorChi) 
 
-inicio_sesion()
+inicio_sesion(contadorArg, contadorBra, contadorChi)
