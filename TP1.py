@@ -10,19 +10,19 @@ tipoUsuario = "Administrador"
 #Novedades
 codigoNovedad1 = "Nov001"
 textoNovedad1 = "Nuevos horarios de salidas de vuelos:\n Se han actualizado los horarios de salidas de vuelos" \
-" para poder llevar a cabo de manera mas eficiente las operaciones en las instalaciones."
+" para poder llevar a cabo de manera mas eficiente las operaciones en las instalaciones.\n"
 fechaPublicacionNovedad1 = "21-04-25"
 fechaExpiracionNovedad1 = "28-04-25"
 
 codigoNovedad2 = "Nov002"
 textoNovedad2 = "Relocalizacion del area de mantenimiento:\n Se ha relocalizado al subsuelo 1 el deposito de insumos de mantenimiento y limpieza de las intalaciones, " \
-"recuerde retirar la nueva tarjeta de acceso en las oficinas de administracion."
+"recuerde retirar la nueva tarjeta de acceso en las oficinas de administracion.\n"
 fechaPublicacionNovedad2 = "24-04-25"
 fechaExpiracionNovedad2 = "01-05-25"
 
 codigoNovedad3 = "Nov003"
 textoNovedad3 = "Recordatorio:\n A raiz del incidente del dia de ayer, " \
-"se solicita encarecidamente asegurar correctamente las señalizaciones correspondientes a la presencia de fosas en los lugares en mantenimiento."
+"se solicita encarecidamente asegurar correctamente las señalizaciones correspondientes a la presencia de fosas en los lugares en mantenimiento.\n"
 fechaPublicacionNovedad3 = "28-05-25"
 fechaExpiracionNovedad3 = "05-05-25"
 
@@ -38,7 +38,10 @@ def cartel_desarrollo():
     time.sleep(3)
     limpiar_pantalla()
 
-def inicio_sesion(contadorArg, contadorBra, contadorChi):
+def inicio_sesion(contadorArg, contadorBra, contadorChi, 
+                  codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                  codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                  codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
     limpiar_pantalla()
 
     intentos = 3
@@ -51,7 +54,10 @@ def inicio_sesion(contadorArg, contadorBra, contadorChi):
         if usuario == usuarioAdmin:
             if contrasena == contrasenaAdmin:
                 print(f"Usuario validado exitosamente. Bienvenido {tipoUsuario}\n")
-                menu_principal(contadorArg, contadorBra, contadorChi)
+                menu_principal(contadorArg, contadorBra, contadorChi, 
+                               codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                               codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                               codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
             else:
                 print("Contraseña incorrecta. Intente nuevamente")
         else:
@@ -64,7 +70,10 @@ def inicio_sesion(contadorArg, contadorBra, contadorChi):
         print("\nDemasiados intentos de inicio de sesion incorrectos. Terminando programa.")
         time.sleep(3)
 
-def menu_principal(contadorArg, contadorBra, contadorChi):
+def menu_principal(contadorArg, contadorBra, contadorChi, codigoNovedad1, 
+                   textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                   codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                   codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
     limpiar_pantalla()
 
     opcion = 1
@@ -85,7 +94,9 @@ def menu_principal(contadorArg, contadorBra, contadorChi):
             case 2: 
                 cartel_desarrollo()
             case 3: 
-                menu_GestionNovedades()
+                menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                                      codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                                      codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
             case 4: 
                 menu_Reportes()
             case 5: 
@@ -115,7 +126,9 @@ def menu_GestionAerolineas(contadorArg, contadorBra, contadorChi):
                     case 2: 
                         submenu_mostrarAerolineas(contadorArg, contadorBra, contadorChi)
                     case 3: 
-                        menu_principal(contadorArg, contadorBra, contadorChi)
+                        menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                                              codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                                              codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
         
         def submenu_mostrarAerolineas(contadorArg, contadorBra, contadorChi):
             limpiar_pantalla()
@@ -209,10 +222,25 @@ def menu_GestionAerolineas(contadorArg, contadorBra, contadorChi):
             case 3: 
                 cartel_desarrollo()
             case 4: 
-                menu_principal(contadorArg, contadorBra, contadorChi)
+                menu_principal(contadorArg, contadorBra, contadorChi, 
+                               codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                               codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                               codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
 
-def menu_GestionNovedades():
+def menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                          codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                          codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
     limpiar_pantalla()
+
+        
+    def gestionNovedades_Editar():
+        cartel_desarrollo()
+    
+    def gestionNovedades_Ver(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                             codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                             codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
+        print(f"{textoNovedad1}{textoNovedad2}{textoNovedad3}")
+
 
     opcion3 = 1
     while(opcion3 != 0):
@@ -233,16 +261,15 @@ def menu_GestionNovedades():
             case 3: 
                 cartel_desarrollo()
             case 4: 
-                gestionNovedades_Ver()
+                gestionNovedades_Ver(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                                     codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                                     codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
             case 5: 
-                menu_principal(contadorArg, contadorBra, contadorChi)
-    
-    def gestionNovedades_Editar():
-        cartel_desarrollo()
-    
-    def gestionNovedades_Ver():
-        cartel_desarrollo()
-
+                menu_principal(contadorArg, contadorBra, contadorChi, codigoNovedad1, 
+                               textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                               codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                               codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
+                
 def menu_Reportes():
     limpiar_pantalla()
 
@@ -264,6 +291,10 @@ def menu_Reportes():
             case 3: 
                 cartel_desarrollo()
             case 4: 
-                menu_principal(contadorArg, contadorBra, contadorChi) 
-
-inicio_sesion(contadorArg, contadorBra, contadorChi)
+                menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                                      codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                                      codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
+inicio_sesion(contadorArg, contadorBra, contadorChi, 
+              codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+              codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+              codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
