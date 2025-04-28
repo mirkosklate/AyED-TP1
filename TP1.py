@@ -7,6 +7,25 @@ usuarioAdmin = "admin"
 contrasenaAdmin = "admin"
 tipoUsuario = "Administrador"
 
+#Novedades
+codigoNovedad1 = "Nov001"
+textoNovedad1 = "Nuevos horarios de salidas de vuelos:\n Se han actualizado los horarios de salidas de vuelos" \
+" para poder llevar a cabo de manera mas eficiente las operaciones en las instalaciones."
+fechaPublicacionNovedad1 = "21-04-25"
+fechaExpiracionNovedad1 = "28-04-25"
+
+codigoNovedad2 = "Nov002"
+textoNovedad2 = "Relocalizacion del area de mantenimiento:\n Se ha relocalizado al subsuelo 1 el deposito de insumos de mantenimiento y limpieza de las intalaciones, " \
+"recuerde retirar la nueva tarjeta de acceso en las oficinas de administracion."
+fechaPublicacionNovedad2 = "24-04-25"
+fechaExpiracionNovedad2 = "01-05-25"
+
+codigoNovedad3 = "Nov003"
+textoNovedad3 = "Recordatorio:\n A raiz del incidente del dia de ayer, " \
+"se solicita encarecidamente asegurar correctamente las señalizaciones correspondientes a la presencia de fosas en los lugares en mantenimiento."
+fechaPublicacionNovedad3 = "28-05-25"
+fechaExpiracionNovedad3 = "05-05-25"
+
 contadorArg = 0
 contadorBra = 0
 contadorChi = 0
@@ -210,13 +229,19 @@ def menu_GestionNovedades():
             case 1: 
                 cartel_desarrollo()
             case 2: 
-                cartel_desarrollo()
+                gestionNovedades_Editar()
             case 3: 
                 cartel_desarrollo()
             case 4: 
-                cartel_desarrollo()
+                gestionNovedades_Ver()
             case 5: 
-                menu_principal() 
+                menu_principal()
+    
+    def gestionNovedades_Editar():
+        cartel_desarrollo()
+    
+    def gestionNovedades_Ver():
+        cartel_desarrollo()
 
 def menu_Reportes():
     limpiar_pantalla()
