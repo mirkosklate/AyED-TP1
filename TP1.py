@@ -86,7 +86,7 @@ def menu_principal(contadorArg, contadorBra, contadorChi, codigoNovedad1,
         print("5. Terminar sesion")
 
         opcion = int(input("Seleccion de opcion: ")) 
-        while(opcion < 1 or opcion > 5 or opcion):
+        while(opcion < 1 or opcion > 5):
             opcion = int(input("Opcion invalida, intente nuevamente: "))
         match opcion:
             case 1: 
