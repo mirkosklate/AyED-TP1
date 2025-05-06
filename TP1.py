@@ -1,6 +1,6 @@
 import os
 import time
-import getpass
+import pwinput
 
 #Ponele que se puede usar variables globales
 usuarioAdmin = "admin"
@@ -49,7 +49,7 @@ def inicio_sesion(contadorArg, contadorBra, contadorChi,
     while(intentos > 0):
         print("\nBienvenido. Para iniciar sesion, por favor introduzca sus datos a continuacion.\n") 
         usuario = input("Usuario: ")    
-        contrasena = getpass.getpass("Ingrese su contraseña... ")
+        contrasena = pwinput.pwinput("Ingrese su contraseña... ")
 
         if usuario == usuarioAdmin:
             if contrasena == contrasenaAdmin:
@@ -85,8 +85,8 @@ def menu_principal(contadorArg, contadorBra, contadorChi, codigoNovedad1,
         print("4. Reportes")
         print("5. Terminar sesion")
 
-        opcion = int(input("Seleccion de opcion: "))
-        while(opcion < 1 or opcion > 5):
+        opcion = int(input("Seleccion de opcion: ")) 
+        while(opcion < 1 or opcion > 5 or opcion):
             opcion = int(input("Opcion invalida, intente nuevamente: "))
         match opcion:
             case 1: 
@@ -167,7 +167,10 @@ def menu_GestionAerolineas(contadorArg, contadorBra, contadorChi):
                     case 1: 
                         gestionAerolineas_Crear(contadorArg, contadorBra, contadorChi)
                     case 2: 
-                        menu_principal(contadorArg, contadorBra, contadorChi)
+                        menu_principal(contadorArg, contadorBra, contadorChi,
+                                       codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
+                                       codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
+                                       codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3)
 
         nombreAerolinea = input("Inserte nombre aerolinea:")
 
@@ -231,7 +234,6 @@ def menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad
                           codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
                           codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
     limpiar_pantalla()
-
         
     def gestionNovedades_Editar():
         cartel_desarrollo()
@@ -239,8 +241,11 @@ def menu_GestionNovedades(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad
     def gestionNovedades_Ver(codigoNovedad1, textoNovedad1, fechaPublicacionNovedad1, fechaExpiracionNovedad1, 
                              codigoNovedad2, textoNovedad2, fechaPublicacionNovedad2, fechaExpiracionNovedad2,
                              codigoNovedad3, textoNovedad3, fechaPublicacionNovedad3, fechaExpiracionNovedad3):
-        print(f"{textoNovedad1}{textoNovedad2}{textoNovedad3}")
+        limpiar_pantalla()
 
+        print(f"Novedad: {codigoNovedad1} Fecha: {fechaPublicacionNovedad1} Valido hasta: {fechaExpiracionNovedad1}\n {textoNovedad1}")
+        print(f"Novedad: {codigoNovedad2} Fecha: {fechaPublicacionNovedad2} Valido hasta: {fechaExpiracionNovedad2}\n {textoNovedad2}")
+        print(f"Novedad: {codigoNovedad3} Fecha: {fechaPublicacionNovedad3} Valido hasta: {fechaExpiracionNovedad3}\n {textoNovedad3}")
 
     opcion3 = 1
     while(opcion3 != 0):
